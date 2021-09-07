@@ -6,6 +6,7 @@ extends Control
 # var b = "text"
 
 onready var info = get_parent().get_node("info")
+onready var settings = get_parent().get_node("settings")
 onready var end = get_parent().get_node("end")
 onready var base = get_node("/root/base")
 onready var click = get_parent().get_node("clicksound")
@@ -13,11 +14,13 @@ onready var endtext = get_parent().get_node("end/text")
 onready var pause = get_parent().get_node("pause")
 onready var levelreset = get_parent().get_node("levelconfirm")
 onready var gamereset = get_parent().get_node("gameconfirm")
+var currentmenu = "none"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$play.grab_focus()
 	visible = true
 	info.visible = false
+	settings.visible = false
 	end.visible = false
 	pause.visible = false
 	levelreset.visible = false
@@ -58,15 +61,24 @@ func _on_info_pressed():
 	click.play()
 	visible = false
 	info.visible = true
+	currentmenu = "info"
 	info.get_node("back").grab_focus()
+
+
 
 
 func _on_back_pressed():
 	click.play()
 	info.visible = false
 	end.visible = false
+	settings.visible = false
 	visible = true
-	$info.grab_focus()
+	if currentmenu == "info":
+		$info.grab_focus()
+		currentmenu = "none"
+	elif currentmenu == "settings":
+		$settings.grab_focus()
+		currentmenu = "none"
 
 
 func _on_quit_pressed():
@@ -129,7 +141,19 @@ func _on_gameconfirm_pressed():
 func _hideall():
 	visible = false
 	info.visible = false
+	settings.visible = false
 	end.visible = false
 	pause.visible = false
 	levelreset.visible = false
 	gamereset.visible = false
+
+
+func _on_settings_pressed():
+	click.play()
+	visible = false
+	info.visible = false
+	end.visible = false
+	pause.visible = false
+	settings.visible = true
+	currentmenu = "settings"
+	settings.get_node("back").grab_focus()

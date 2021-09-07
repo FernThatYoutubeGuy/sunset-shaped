@@ -125,10 +125,45 @@ autoplay = true
 
 [node name="menu" parent="." instance=ExtResource( 6 )]
 
+[node name="settings" parent="menu/menu" index="3"]
+focus_neighbour_left = NodePath("../play")
+focus_neighbour_top = NodePath("../play")
+
+[node name="ColorRect" parent="menu/settings" index="0"]
+margin_left = 0.539307
+margin_top = -105.703
+margin_right = 0.539307
+margin_bottom = -105.703
+
+[node name="RichTextLabel" parent="menu/settings/Control/left_prev" index="0"]
+text = "Movement_Left"
+
+[node name="TextureButton" parent="menu/settings/Control/left_prev" index="1"]
+focus_neighbour_left = NodePath("../../../back")
+focus_neighbour_top = NodePath("../../../back")
+focus_neighbour_right = NodePath("../../right_next/TextureButton")
+focus_neighbour_bottom = NodePath("../../right_next/TextureButton")
+
+[node name="TextureButton" parent="menu/settings/Control/right_next" index="1"]
+focus_neighbour_left = NodePath("../../left_prev/TextureButton")
+focus_neighbour_top = NodePath("../../left_prev/TextureButton")
+focus_neighbour_right = NodePath("../../jump_select/TextureButton")
+focus_neighbour_bottom = NodePath("../../jump_select/TextureButton")
+
+[node name="back" parent="menu/settings" index="4"]
+focus_neighbour_right = NodePath("../Control/left_prev/TextureButton")
+focus_neighbour_bottom = NodePath("../Control/left_prev/TextureButton")
+
 [node name="level" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="text2" parent="level" index="2"]
+margin_top = 291.653
+margin_bottom = 399.653
 
 [editable path="player"]
 [editable path="menu"]
+[editable path="menu/menu/settings"]
 [editable path="menu/menu/info"]
 [editable path="menu/menu/quit"]
 [editable path="menu/pause/continue"]
@@ -141,4 +176,6 @@ autoplay = true
 [editable path="menu/gameconfirm/return"]
 [editable path="menu/gameconfirm/text"]
 [editable path="menu/info/back"]
+[editable path="menu/settings/back"]
 [editable path="menu/end/back"]
+[editable path="level"]

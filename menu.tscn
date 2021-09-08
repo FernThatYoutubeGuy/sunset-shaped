@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://christmas lights.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://menu/button.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://menu/menu.gd" type="Script" id=4]
 [ext_resource path="res://audio/click.wav" type="AudioStream" id=5]
 [ext_resource path="res://menu/settingsbuttons.gd" type="Script" id=6]
+[ext_resource path="res://menu/options.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
@@ -448,7 +449,6 @@ bbcode_text = "[center]press z to select"
 text = "press z to select"
 
 [node name="settings" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -492,18 +492,19 @@ text = "press z to select"
 [node name="Control" type="Control" parent="settings"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="left_prev" type="Control" parent="settings/Control"]
+[node name="left" type="Control" parent="settings/Control"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/left_prev"]
+[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/left"]
 anchor_left = 0.124
 anchor_top = 0.328
 anchor_right = 0.124
@@ -518,7 +519,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="settings/Control/left_prev"]
+[node name="TextureButton" type="TextureButton" parent="settings/Control/left"]
 anchor_left = 0.533
 anchor_top = 0.329
 anchor_right = 0.533
@@ -527,22 +528,25 @@ margin_left = 471.219
 margin_top = 166.677
 margin_right = 577.219
 margin_bottom = 201.677
+focus_neighbour_left = NodePath("../../../back")
+focus_neighbour_top = NodePath("../../../back")
+focus_neighbour_right = NodePath("../../right/TextureButton")
+focus_neighbour_bottom = NodePath("../../right/TextureButton")
 script = ExtResource( 6 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/left_prev/TextureButton"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/left/TextureButton"]
 modulate = Color( 0.898039, 0.596078, 0.607843, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+margin_left = -76.0
+margin_top = -19.5
+margin_right = 74.0
+margin_bottom = 20.5
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]←"
@@ -551,7 +555,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="right_next" type="Control" parent="settings/Control"]
+[node name="right" type="Control" parent="settings/Control"]
 margin_top = 48.9206
 margin_right = 40.0
 margin_bottom = 88.9206
@@ -559,7 +563,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/right_next"]
+[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/right"]
 anchor_left = 0.124
 anchor_top = 0.328
 anchor_right = 0.124
@@ -574,7 +578,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="settings/Control/right_next"]
+[node name="TextureButton" type="TextureButton" parent="settings/Control/right"]
 anchor_left = 0.533
 anchor_top = 0.329
 anchor_right = 0.533
@@ -583,22 +587,25 @@ margin_left = 471.219
 margin_top = 166.677
 margin_right = 577.219
 margin_bottom = 201.677
+focus_neighbour_left = NodePath("../../left/TextureButton")
+focus_neighbour_top = NodePath("../../left/TextureButton")
+focus_neighbour_right = NodePath("../../jump/TextureButton")
+focus_neighbour_bottom = NodePath("../../jump/TextureButton")
 script = ExtResource( 6 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/right_next/TextureButton"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/right/TextureButton"]
 modulate = Color( 0.898039, 0.596078, 0.607843, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+margin_left = -76.0
+margin_top = -19.5
+margin_right = 74.0
+margin_bottom = 20.5
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]←"
@@ -607,7 +614,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="jump_select" type="Control" parent="settings/Control"]
+[node name="jump" type="Control" parent="settings/Control"]
 margin_top = 97.9206
 margin_right = 40.0
 margin_bottom = 137.921
@@ -615,7 +622,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/jump_select"]
+[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/jump"]
 anchor_left = 0.124
 anchor_top = 0.328
 anchor_right = 0.124
@@ -630,7 +637,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="settings/Control/jump_select"]
+[node name="TextureButton" type="TextureButton" parent="settings/Control/jump"]
 anchor_left = 0.533
 anchor_top = 0.329
 anchor_right = 0.533
@@ -639,26 +646,25 @@ margin_left = 471.219
 margin_top = 166.677
 margin_right = 577.219
 margin_bottom = 201.677
-focus_neighbour_left = NodePath("../../right_next/TextureButton")
-focus_neighbour_top = NodePath("../../right_next/TextureButton")
+focus_neighbour_left = NodePath("../../right/TextureButton")
+focus_neighbour_top = NodePath("../../right/TextureButton")
 focus_neighbour_right = NodePath("../../Music/HSlider")
 focus_neighbour_bottom = NodePath("../../Music/HSlider")
 script = ExtResource( 6 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/jump_select/TextureButton"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/jump/TextureButton"]
 modulate = Color( 0.898039, 0.596078, 0.607843, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+margin_left = -76.0
+margin_top = -19.5
+margin_right = 74.0
+margin_bottom = 20.5
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]←"
@@ -698,8 +704,8 @@ margin_left = 430.493
 margin_top = 324.922
 margin_right = 635.493
 margin_bottom = 340.922
-focus_neighbour_left = NodePath("../../jump_select/TextureButton")
-focus_neighbour_top = NodePath("../../jump_select/TextureButton")
+focus_neighbour_left = NodePath("../../jump/TextureButton")
+focus_neighbour_top = NodePath("../../jump/TextureButton")
 focus_neighbour_right = NodePath("../../Sounds/HSlider")
 focus_neighbour_bottom = NodePath("../../Sounds/HSlider")
 custom_styles/slider = SubResource( 3 )
@@ -768,8 +774,8 @@ margin_right = 266.0
 margin_bottom = 0.0
 focus_neighbour_left = NodePath("../Control/Sounds/HSlider")
 focus_neighbour_top = NodePath("../Control/Sounds/HSlider")
-focus_neighbour_right = NodePath(".")
-focus_neighbour_bottom = NodePath(".")
+focus_neighbour_right = NodePath("../Control/left/TextureButton")
+focus_neighbour_bottom = NodePath("../Control/left/TextureButton")
 
 [node name="text" parent="settings/back" index="0"]
 bbcode_text = "[center]back"
@@ -857,12 +863,15 @@ volume_db = -30.0
 [connection signal="pressed" from="gameconfirm/continue" to="menu" method="_on_gameconfirm_pressed"]
 [connection signal="pressed" from="gameconfirm/return" to="menu" method="_on_backtopause_pressed"]
 [connection signal="pressed" from="info/back" to="menu" method="_on_back_pressed"]
-[connection signal="focus_entered" from="settings/Control/left_prev/TextureButton" to="settings/Control/left_prev/TextureButton" method="_on_TextureButton_focus_entered"]
-[connection signal="focus_exited" from="settings/Control/left_prev/TextureButton" to="settings/Control/left_prev/TextureButton" method="_on_TextureButton_focus_exited"]
-[connection signal="focus_entered" from="settings/Control/right_next/TextureButton" to="settings/Control/right_next/TextureButton" method="_on_TextureButton_focus_entered"]
-[connection signal="focus_exited" from="settings/Control/right_next/TextureButton" to="settings/Control/right_next/TextureButton" method="_on_TextureButton_focus_exited"]
-[connection signal="focus_entered" from="settings/Control/jump_select/TextureButton" to="settings/Control/jump_select/TextureButton" method="_on_TextureButton_focus_entered"]
-[connection signal="focus_exited" from="settings/Control/jump_select/TextureButton" to="settings/Control/jump_select/TextureButton" method="_on_TextureButton_focus_exited"]
+[connection signal="focus_entered" from="settings/Control/left/TextureButton" to="settings/Control/left/TextureButton" method="_on_TextureButton_focus_entered"]
+[connection signal="focus_exited" from="settings/Control/left/TextureButton" to="settings/Control/left/TextureButton" method="_on_TextureButton_focus_exited"]
+[connection signal="pressed" from="settings/Control/left/TextureButton" to="settings/Control" method="change_key_left"]
+[connection signal="focus_entered" from="settings/Control/right/TextureButton" to="settings/Control/right/TextureButton" method="_on_TextureButton_focus_entered"]
+[connection signal="focus_exited" from="settings/Control/right/TextureButton" to="settings/Control/right/TextureButton" method="_on_TextureButton_focus_exited"]
+[connection signal="pressed" from="settings/Control/right/TextureButton" to="settings/Control" method="change_key_right"]
+[connection signal="focus_entered" from="settings/Control/jump/TextureButton" to="settings/Control/jump/TextureButton" method="_on_TextureButton_focus_entered"]
+[connection signal="focus_exited" from="settings/Control/jump/TextureButton" to="settings/Control/jump/TextureButton" method="_on_TextureButton_focus_exited"]
+[connection signal="pressed" from="settings/Control/jump/TextureButton" to="settings/Control" method="change_key_jump"]
 [connection signal="pressed" from="settings/back" to="menu" method="_on_back_pressed"]
 [connection signal="pressed" from="end/back" to="menu" method="_on_back_pressed"]
 

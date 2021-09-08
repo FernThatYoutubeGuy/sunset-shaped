@@ -1,14 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://christmas lights.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://menu/button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level stuff/text.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menu/menu.gd" type="Script" id=4]
 [ext_resource path="res://audio/click.wav" type="AudioStream" id=5]
+[ext_resource path="res://menu/settingsbuttons.gd" type="Script" id=6]
+[ext_resource path="res://menu/options.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 90
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 1, 0.803922, 0.698039, 1 )
+grow_begin = 0.0
+grow_end = -5.0
+thickness = 10
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.898039, 0.596078, 0.607843, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.898039, 0.596078, 0.607843, 1 )
 
 [node name="menu" type="CanvasLayer"]
 layer = 2
@@ -31,10 +49,10 @@ __meta__ = {
 
 [node name="title" type="RichTextLabel" parent="menu"]
 modulate = Color( 1, 0.705882, 0.635294, 1 )
-margin_left = 289.315
-margin_top = 104.962
-margin_right = 963.315
-margin_bottom = 225.962
+margin_left = 337.315
+margin_top = 56.962
+margin_right = 1011.32
+margin_bottom = 177.962
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center] sunset-shaped"
@@ -45,35 +63,36 @@ __meta__ = {
 }
 
 [node name="play" parent="menu" instance=ExtResource( 2 )]
-margin_left = -89.141
-margin_top = 254.244
-margin_right = 442.859
-margin_bottom = 375.244
-focus_neighbour_right = NodePath("../levels")
-focus_neighbour_bottom = NodePath("../levels")
+margin_left = -154.563
+margin_top = 201.007
+margin_right = 377.437
+margin_bottom = 322.007
+focus_neighbour_right = NodePath("../settings")
+focus_neighbour_bottom = NodePath("../settings")
 
-[node name="levels" parent="menu" instance=ExtResource( 2 )]
-margin_left = 108.852
-margin_top = 312.682
-margin_right = 640.852
-margin_bottom = 433.682
-focus_neighbour_left = NodePath("../play")
-focus_neighbour_top = NodePath("../play")
+[node name="settings" parent="menu" instance=ExtResource( 2 )]
+margin_left = 45.6245
+margin_top = 275.752
+margin_right = 577.625
+margin_bottom = 396.752
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath("../info")
+focus_neighbour_bottom = NodePath("../info")
 
-[node name="text" parent="menu/levels" index="0"]
-bbcode_text = "[center]levels"
-text = "levels"
-
-[node name="Particles2D" parent="menu/levels" index="1"]
-position = Vector2( 178.122, 31.6753 )
+[node name="text" parent="menu/settings" index="0"]
+margin_left = 40.0
+margin_right = 659.0
+bbcode_text = "[center]options"
+text = "options"
 
 [node name="info" parent="menu" instance=ExtResource( 2 )]
-margin_left = 320.413
-margin_top = 358.007
-margin_right = 852.413
-margin_bottom = 479.007
-focus_neighbour_left = NodePath("../levels")
-focus_neighbour_top = NodePath("../levels")
+margin_left = 335.543
+margin_top = 339.756
+margin_right = 867.543
+margin_bottom = 460.756
+focus_neighbour_left = NodePath("../settings")
+focus_neighbour_top = NodePath("../settings")
 focus_neighbour_right = NodePath("../quit")
 focus_neighbour_bottom = NodePath("../quit")
 
@@ -82,14 +101,12 @@ bbcode_text = "[center]info"
 text = "info"
 
 [node name="quit" parent="menu" instance=ExtResource( 2 )]
-margin_left = 498.761
-margin_top = 407.561
-margin_right = 1030.76
-margin_bottom = 528.561
+margin_left = 585.389
+margin_top = 388.886
+margin_right = 1117.39
+margin_bottom = 509.886
 focus_neighbour_left = NodePath("../info")
 focus_neighbour_top = NodePath("../info")
-focus_neighbour_right = NodePath("")
-focus_neighbour_bottom = NodePath("")
 
 [node name="text" parent="menu/quit" index="0"]
 bbcode_text = "[center]quit"
@@ -331,8 +348,6 @@ margin_right = 1070.54
 margin_bottom = 556.119
 focus_neighbour_left = NodePath("../restart2")
 focus_neighbour_top = NodePath("../restart2")
-focus_neighbour_right = NodePath("")
-focus_neighbour_bottom = NodePath("")
 
 [node name="text" parent="pause/quit" index="0"]
 bbcode_text = "[center]quit"
@@ -413,8 +428,6 @@ margin_right = 864.891
 margin_bottom = 539.79
 focus_neighbour_left = NodePath("../continue")
 focus_neighbour_top = NodePath("../continue")
-focus_neighbour_right = NodePath("")
-focus_neighbour_bottom = NodePath("")
 
 [node name="text" parent="levelconfirm/return" index="0"]
 bbcode_text = "[center]return"
@@ -495,8 +508,6 @@ margin_right = 864.891
 margin_bottom = 539.79
 focus_neighbour_left = NodePath("../continue")
 focus_neighbour_top = NodePath("../continue")
-focus_neighbour_right = NodePath("")
-focus_neighbour_bottom = NodePath("")
 
 [node name="text" parent="gameconfirm/return" index="0"]
 bbcode_text = "[center]return"
@@ -573,6 +584,339 @@ margin_right = 498.761
 margin_bottom = 738.587
 bbcode_text = "[center]press z to select"
 text = "press z to select"
+
+[node name="settings" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.427451, 0.407843, 0.458824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="RichTextLabel" parent="settings"]
+modulate = Color( 0.898039, 0.596078, 0.607843, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -170.5
+margin_top = 48.0
+margin_right = 170.5
+margin_bottom = 169.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]options"
+text = "options"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text2" parent="settings" instance=ExtResource( 3 )]
+modulate = Color( 1, 0.803922, 0.698039, 1 )
+margin_left = -120.239
+margin_top = 532.587
+margin_right = 498.761
+margin_bottom = 738.587
+bbcode_text = "[center]press z to select"
+text = "press z to select"
+
+[node name="Control" type="Control" parent="settings"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="left" type="Control" parent="settings/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/left"]
+anchor_left = 0.124
+anchor_top = 0.328
+anchor_right = 0.124
+anchor_bottom = 0.328
+margin_left = 178.04
+margin_top = 166.88
+margin_right = 478.04
+margin_bottom = 200.88
+custom_fonts/normal_font = SubResource( 2 )
+text = "move left / ui prev"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="settings/Control/left"]
+anchor_left = 0.533
+anchor_top = 0.329
+anchor_right = 0.533
+anchor_bottom = 0.329
+margin_left = 471.219
+margin_top = 166.677
+margin_right = 577.219
+margin_bottom = 201.677
+focus_neighbour_left = NodePath("../../../back")
+focus_neighbour_top = NodePath("../../../back")
+focus_neighbour_right = NodePath("../../right/TextureButton")
+focus_neighbour_bottom = NodePath("../../right/TextureButton")
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/left/TextureButton"]
+modulate = Color( 0.898039, 0.596078, 0.607843, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = -19.5
+margin_right = 74.0
+margin_bottom = 20.5
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]←"
+text = "←"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right" type="Control" parent="settings/Control"]
+margin_top = 48.9206
+margin_right = 40.0
+margin_bottom = 88.9206
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/right"]
+anchor_left = 0.124
+anchor_top = 0.328
+anchor_right = 0.124
+anchor_bottom = 0.328
+margin_left = 178.04
+margin_top = 166.88
+margin_right = 478.04
+margin_bottom = 200.88
+custom_fonts/normal_font = SubResource( 2 )
+text = "move right / ui next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="settings/Control/right"]
+anchor_left = 0.533
+anchor_top = 0.329
+anchor_right = 0.533
+anchor_bottom = 0.329
+margin_left = 471.219
+margin_top = 166.677
+margin_right = 577.219
+margin_bottom = 201.677
+focus_neighbour_left = NodePath("../../left/TextureButton")
+focus_neighbour_top = NodePath("../../left/TextureButton")
+focus_neighbour_right = NodePath("../../jump/TextureButton")
+focus_neighbour_bottom = NodePath("../../jump/TextureButton")
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/right/TextureButton"]
+modulate = Color( 0.898039, 0.596078, 0.607843, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = -19.5
+margin_right = 74.0
+margin_bottom = 20.5
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]←"
+text = "←"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jump" type="Control" parent="settings/Control"]
+margin_top = 97.9206
+margin_right = 40.0
+margin_bottom = 137.921
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/jump"]
+anchor_left = 0.124
+anchor_top = 0.328
+anchor_right = 0.124
+anchor_bottom = 0.328
+margin_left = 178.04
+margin_top = 166.88
+margin_right = 478.04
+margin_bottom = 200.88
+custom_fonts/normal_font = SubResource( 2 )
+text = "jump / ui select"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="settings/Control/jump"]
+anchor_left = 0.533
+anchor_top = 0.329
+anchor_right = 0.533
+anchor_bottom = 0.329
+margin_left = 471.219
+margin_top = 166.677
+margin_right = 577.219
+margin_bottom = 201.677
+focus_neighbour_left = NodePath("../../right/TextureButton")
+focus_neighbour_top = NodePath("../../right/TextureButton")
+focus_neighbour_right = NodePath("../../Music/HSlider")
+focus_neighbour_bottom = NodePath("../../Music/HSlider")
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="settings/Control/jump/TextureButton"]
+modulate = Color( 0.898039, 0.596078, 0.607843, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = -19.5
+margin_right = 74.0
+margin_bottom = 20.5
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]←"
+text = "←"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Control" parent="settings/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/Music"]
+anchor_left = 0.124
+anchor_top = 0.328
+anchor_right = 0.124
+anchor_bottom = 0.328
+margin_left = 178.04
+margin_top = 329.801
+margin_right = 478.04
+margin_bottom = 363.801
+custom_fonts/normal_font = SubResource( 2 )
+text = "music volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="settings/Control/Music"]
+anchor_left = 0.527
+anchor_top = 0.595
+anchor_right = 0.527
+anchor_bottom = 0.595
+margin_left = 430.493
+margin_top = 324.922
+margin_right = 635.493
+margin_bottom = 340.922
+focus_neighbour_left = NodePath("../../jump/TextureButton")
+focus_neighbour_top = NodePath("../../jump/TextureButton")
+focus_neighbour_right = NodePath("../../Sounds/HSlider")
+focus_neighbour_bottom = NodePath("../../Sounds/HSlider")
+custom_styles/slider = SubResource( 3 )
+custom_styles/grabber_area_highlight = SubResource( 4 )
+custom_styles/grabber_area = SubResource( 5 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sounds" type="Control" parent="settings/Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="settings/Control/Sounds"]
+anchor_left = 0.124
+anchor_top = 0.328
+anchor_right = 0.124
+anchor_bottom = 0.328
+margin_left = 178.04
+margin_top = 378.801
+margin_right = 478.04
+margin_bottom = 412.801
+custom_fonts/normal_font = SubResource( 2 )
+text = "sfx volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="settings/Control/Sounds"]
+anchor_left = 0.527
+anchor_top = 0.595
+anchor_right = 0.527
+anchor_bottom = 0.595
+margin_left = 430.493
+margin_top = 373.922
+margin_right = 635.493
+margin_bottom = 389.922
+focus_neighbour_left = NodePath("../../Music/HSlider")
+focus_neighbour_top = NodePath("../../Music/HSlider")
+focus_neighbour_right = NodePath("../../../back")
+focus_neighbour_bottom = NodePath("../../../back")
+custom_styles/slider = SubResource( 3 )
+custom_styles/grabber_area_highlight = SubResource( 4 )
+custom_styles/grabber_area = SubResource( 5 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back" parent="settings" instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -266.0
+margin_top = -121.0
+margin_right = 266.0
+margin_bottom = 0.0
+focus_neighbour_left = NodePath("../Control/Sounds/HSlider")
+focus_neighbour_top = NodePath("../Control/Sounds/HSlider")
+focus_neighbour_right = NodePath("../Control/left/TextureButton")
+focus_neighbour_bottom = NodePath("../Control/left/TextureButton")
+
+[node name="text" parent="settings/back" index="0"]
+bbcode_text = "[center]back"
+text = "back"
 
 [node name="end" type="Control" parent="."]
 visible = false
@@ -733,6 +1077,7 @@ volume_db = -30.0
 
 [connection signal="pressed" from="menu/play" to="menu" method="_on_play_pressed"]
 [connection signal="pressed" from="menu/levels" to="menu" method="_on_levels_pressed"]
+[connection signal="pressed" from="menu/settings" to="menu" method="_on_settings_pressed"]
 [connection signal="pressed" from="menu/info" to="menu" method="_on_info_pressed"]
 [connection signal="pressed" from="menu/quit" to="menu" method="_on_quit_pressed"]
 [connection signal="levelselect" from="levels/1" to="menu" method="_on_levelselect"]
@@ -756,10 +1101,21 @@ volume_db = -30.0
 [connection signal="pressed" from="gameconfirm/return" to="menu" method="_on_backtopause_pressed"]
 [connection signal="pressed" from="info/back" to="menu" method="_on_back_pressed"]
 [connection signal="pressed" from="end/leveltime" to="menu" method="_on_leveltime_pressed"]
+[connection signal="focus_entered" from="settings/Control/left/TextureButton" to="settings/Control/left/TextureButton" method="_on_TextureButton_focus_entered"]
+[connection signal="focus_exited" from="settings/Control/left/TextureButton" to="settings/Control/left/TextureButton" method="_on_TextureButton_focus_exited"]
+[connection signal="pressed" from="settings/Control/left/TextureButton" to="settings/Control" method="change_key_left"]
+[connection signal="focus_entered" from="settings/Control/right/TextureButton" to="settings/Control/right/TextureButton" method="_on_TextureButton_focus_entered"]
+[connection signal="focus_exited" from="settings/Control/right/TextureButton" to="settings/Control/right/TextureButton" method="_on_TextureButton_focus_exited"]
+[connection signal="pressed" from="settings/Control/right/TextureButton" to="settings/Control" method="change_key_right"]
+[connection signal="focus_entered" from="settings/Control/jump/TextureButton" to="settings/Control/jump/TextureButton" method="_on_TextureButton_focus_entered"]
+[connection signal="focus_exited" from="settings/Control/jump/TextureButton" to="settings/Control/jump/TextureButton" method="_on_TextureButton_focus_exited"]
+[connection signal="pressed" from="settings/Control/jump/TextureButton" to="settings/Control" method="change_key_jump"]
+[connection signal="pressed" from="settings/back" to="menu" method="_on_back_pressed"]
 [connection signal="pressed" from="end/back" to="menu" method="_on_back_pressed"]
 [connection signal="pressed" from="leveltimer/back" to="menu" method="_on_endback_pressed"]
 
 [editable path="menu/levels"]
+[editable path="menu/settings"]
 [editable path="menu/info"]
 [editable path="menu/quit"]
 [editable path="levels/1"]
@@ -779,5 +1135,6 @@ volume_db = -30.0
 [editable path="gameconfirm/text"]
 [editable path="info/back"]
 [editable path="end/leveltime"]
+[editable path="settings/back"]
 [editable path="end/back"]
 [editable path="leveltimer/back"]

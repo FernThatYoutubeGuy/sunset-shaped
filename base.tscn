@@ -125,11 +125,31 @@ autoplay = true
 
 [node name="menu" parent="." instance=ExtResource( 6 )]
 
+[node name="settings" parent="menu/menu" index="3"]
+focus_neighbour_left = NodePath("../play")
+focus_neighbour_top = NodePath("../play")
+
+[node name="ColorRect" parent="menu/settings" index="0"]
+margin_left = 0.539307
+margin_top = -105.703
+margin_right = 0.539307
+margin_bottom = -105.703
+
+[node name="back" parent="menu/settings" index="4"]
+focus_neighbour_right = NodePath("../Control/left_prev/TextureButton")
+focus_neighbour_bottom = NodePath("../Control/left_prev/TextureButton")
+
 [node name="level" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="text2" parent="level" index="2"]
+margin_top = 291.653
+margin_bottom = 399.653
 
 [editable path="player"]
 [editable path="menu"]
 [editable path="menu/menu/levels"]
+[editable path="menu/menu/settings"]
 [editable path="menu/menu/info"]
 [editable path="menu/menu/quit"]
 [editable path="menu/levels/1"]
@@ -151,3 +171,6 @@ autoplay = true
 [editable path="menu/end/leveltime"]
 [editable path="menu/end/back"]
 [editable path="menu/leveltimer/back"]
+[editable path="menu/settings/back"]
+[editable path="menu/end/back"]
+[editable path="level"]

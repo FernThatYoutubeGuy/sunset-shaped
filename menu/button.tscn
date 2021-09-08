@@ -31,8 +31,6 @@ margin_left = -40.3858
 margin_top = 301.154
 margin_right = 491.614
 margin_bottom = 422.154
-focus_neighbour_right = NodePath("../info")
-focus_neighbour_bottom = NodePath("../info")
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
